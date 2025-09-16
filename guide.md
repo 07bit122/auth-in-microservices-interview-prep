@@ -208,7 +208,7 @@ sequenceDiagram
     GatewayBFF-\>\>GatewayBFF: 12\. Creates Session, stores tokens  
     GatewayBFF--\>\>SPA: 13\. Returns success (sets session cookie)
 
-![][image1]
+![https://github.com/07bit122/auth-in-microservices-interview-prep/blob/main/image1.png][image1]
 
 **Steps**:
 
@@ -249,7 +249,7 @@ PaymentService \--\>\> OrderService : 6\. Return API Response
 
 @enduml
 
-![][image2]  
+![https://github.com/07bit122/auth-in-microservices-interview-prep/blob/main/image2.png][image2]  
 **Steps**:
 
 1. When the Order Service needs to call the Payment Service, it first requests an access token from the Auth Service's /token endpoint.  
@@ -286,7 +286,7 @@ ResourceService \--\>\> Client : 7\. Return 200 OK
 
 @enduml
 
-![][image3]  
+![https://github.com/07bit122/auth-in-microservices-interview-prep/blob/main/image3.png][image3]  
 **Steps**:
 
 1. The client (e.g., the BFF acting on behalf of the user) makes an API call to a protected Resource Service using its stored access\_token.  
@@ -347,7 +347,7 @@ graph TD
         }  
         ")  
     end  
-![][image4]  
+![https://github.com/07bit122/auth-in-microservices-interview-prep/blob/main/image4.png][image4]  
 **Steps**:
 
 1. A manager's client sends a request to POST /expenses/123/approve with their JWT.  
