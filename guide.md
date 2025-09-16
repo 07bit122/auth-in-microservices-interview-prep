@@ -72,6 +72,17 @@ OAuth 2.0 specifies several "grant types," which are different flows for obtaini
 | **Client Credentials** | Secure service-to-service (machine-to-machine) communication where no user is involved.18 | The client (a microservice) authenticates directly with the Authorization Server using its own credentials (client\_id and client\_secret) to obtain an access token.21 | **High (for trusted clients)**. The security of this flow depends entirely on the confidentiality of the client's credentials. It is suitable only for backend services that can securely store a secret. |
 | **Refresh Token** | Obtaining a new access token after the original has expired, without requiring the user to log in again.18 | Not a grant type itself, but a mechanism used alongside other flows. The client presents a long-lived refresh token to the Authorization Server to get a new, short-lived access token.20 | **Crucial for UX and Security**. Allows access tokens to be short-lived (reducing the window of opportunity if stolen) while providing a seamless user experience. |
 
+#### **Section 2.1.1: 2-Legged vs. 3-Legged OAuth: A Note on Terminology**
+While the official OAuth 2.0 specification defines flows by their grant types, you will often encounter the terms "3-legged" and "2-legged" OAuth in discussions and documentation. These terms refer to the number of parties involved in the authorization process and provide a helpful conceptual shorthand.   
+
+3-Legged OAuth: This is the classic user-delegation model and involves three distinct parties (or "legs"): the user (Resource Owner), the application (Client), and the Authorization Server. This flow is characterized by direct user interaction, where the user must authenticate and provide explicit consent for the application to access their resources. The Authorization Code grant type is the quintessential example of a 3-legged flow.   
+
+2-Legged OAuth: This model is used for direct client-to-server interactions where no end-user is involved. The "third leg"—the user—is absent because the client is accessing its own resources or is acting on its own behalf. This is the standard pattern for service-to-service communication. In the context of OAuth 2.0, the Client Credentials grant type is the implementation of a 2-legged flow.   
+
+In summary, the key distinction is the presence of an interactive user granting consent. If a user is redirected to an authorization server to log in and approve access, it's a 3-legged flow. If an application uses its own credentials to get a token for itself, it's a 2-legged flow.
+
+
+
 ### **Section 2.2: OpenID Connect (OIDC): An Identity Layer on OAuth 2.0**
 
 OAuth 2.0 provides a way to get a token that grants access (authorization), but it doesn't provide a standard way to know *who* the user is that granted that access. OpenID Connect (OIDC) was created to fill this gap. It is a thin identity layer built on top of OAuth 2.0 that provides authentication.16
